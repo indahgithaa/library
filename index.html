@@ -11,37 +11,32 @@
 </head>
 <body>
     <!-- Navigation -->
-    <header>
+    <header class="nav-head">
         <h1>Library</h1>
+        <span>
         <button id="addButton">Add Book</button>
+        </span>
     </header>
-    <!-- Table for Users -->
-    <table id="users_book">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-    </table>
+    <!-- Search Bar -->
+    <form action="#" class="search-bar"></form>
     <!-- Modal Popup -->
     <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
     <section class="modal">
         <div class="modal-content">
+            <div id="centered-popup">
             <header id="modal-header">
                 <h1>Add a Book</h1>
             </header>
             <form action="#" id="bookform">
                 <label for="book-title">Title</label>
                 <input type="text" id="book-title" name="book-title">
-                <label for="book-title">Author</label>
-                <input type="text" id="book-title" name="book-title">
-                <label for="book-title">Pages</label>
-                <input type="text" id="book-title" name="book-title">
-                <label for="status"><input type="checkbox" name="status" id="status">I've read this book</label>
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" name="pages">
+                <label for="status" id="status-name"><input type="checkbox" name="status" id="status">I've read this book</label>
             </form>
+            </div>
         </div>
     </section>
     <script src="script.js"></script>

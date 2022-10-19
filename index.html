@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <h1>Library</h1>
+        <button id="addButton">Add Book</button>
+    </header>
+    <!-- Table for Users -->
+    <table id="users_book">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+    </table>
+    <!-- Modal Popup -->
+    <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
+    <section class="modal">
+        <div class="modal-content">
+            <header id="modal-header">
+                <h1>Add a Book</h1>
+            </header>
+            <form action="#" id="bookform">
+                <label for="book-title">Title</label>
+                <input type="text" id="book-title" name="book-title">
+                <label for="book-title">Author</label>
+                <input type="text" id="book-title" name="book-title">
+                <label for="book-title">Pages</label>
+                <input type="text" id="book-title" name="book-title">
+                <label for="status"><input type="checkbox" name="status" id="status">I've read this book</label>
+            </form>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

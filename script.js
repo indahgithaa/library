@@ -1,6 +1,17 @@
 const modal = document.querySelector('.modal')
-const addButton = document.querySelector('#addButton')
+const addBtn = document.querySelector('#addButton')
+const closeBtn = document.querySelector('#closeButton')
 
-addButton.addEventListener('click', () => {
+addBtn.addEventListener('click', () => {
     modal.style.display = "block"
 })
+
+function closeModal() {
+    modal.style.display = "none";
+    document.body.classList.remove('modal')
+}
+
+closeBtn.onclick = () => {
+    closeModal()
+}
+

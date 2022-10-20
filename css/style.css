@@ -1,5 +1,21 @@
+:root {
+    --search-bar: #dde1e7;
+}
+
 * {
     font-family: Poppins;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    padding: 50px;
 }
 
 /* Header */
@@ -8,7 +24,43 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 70vw;
+    border-bottom: 5px solid black;
+    border-left: 30%;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 15px;
+    background-color: var(--search-bar);
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+.search-bar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    background-color: var(--search-bar);
+}
+
+.search-bar img {
+    width: 15px;
+    height: auto;
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 60px;
+    background-color: #dde1e7;
+    cursor: pointer;
 }
 
 /* Modal */
@@ -27,6 +79,12 @@
 	align-items: center;
 }
 
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -42,6 +100,24 @@
     transform: translate(-50%, -50%);
 }
 
+.centeredBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#reset-button {
+    width: 100%;
+    height: 36px;
+}
+
+#submit-button {
+    width: 100%;
+    height: 36px;
+}
+
 input[type=checkbox] {
     position: relative;
     vertical-align: middle;
@@ -50,9 +126,10 @@ input[type=checkbox] {
 
 input[type=text],
 input[type=number]{
-    width: 285px;
+    width: 100%;
     height: 30px;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #bookform label {

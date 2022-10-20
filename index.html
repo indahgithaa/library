@@ -10,44 +10,44 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
-    <div class="container">
     <!-- Navigation -->
     <header class="nav-head">
-        <h1>Library <img src="images/open-book.png" style="width: 35px; height: auto; vertical-align: middle;"></h1>
+        <h1>Digital Library</h1>
         <span>
-        <button id="addButton">Add Book</button>
+        <button id="addButton">+ Add Book</button>
         </span>
     </header>
-    <!-- Search Bar -->
-    <form action="#" class="search-bar">
-        <input placeholder="search a book..." type="text" name="search" id="search">
-        <button type="submit"><img src="images/search.png"></button>
-    </form>
-    <!-- Modal Popup -->
-    <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
-    <section class="modal">
-        <div class="modal-content">
-            <div id="centered-popup">
-            <header class="modal-header">
-                <h1>Add a Book</h1>
-                <img src="images/close.png" id="closeButton" style="width: 15px; height: 15px; cursor:pointer;">
-            </header>
-            <form action="#" id="bookform">
-                <label for="book-title">Title</label>
-                <input type="text" id="book-title" name="book-title">
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-                <label for="pages">Pages</label>
-                <input type="number" id="pages" name="pages">
-                <label for="status" id="status-name"><input type="checkbox" name="status" id="status">I've read this book</label>
-            </form>
-            <div class="centeredBtn">
-            <button id="reset-button">Reset</button>
-            <button id="submit-button">Submit</button>
+    <div class="main-container">
+        <!-- Search Bar -->
+        <form action="#" class="search-bar">
+            <input placeholder="search a book..." type="text" name="search" id="search">
+            <button type="submit"><img src="images/search.png"></button>
+        </form>
+        <!-- Modal Popup -->
+        <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
+        <section class="modal">
+            <div class="modal-content">
+                <div id="centered-popup">
+                <header class="modal-header">
+                    <h1>Add a Book</h1>
+                    <img src="images/close.png" id="closeButton" style="width: 15px; height: 15px; cursor:pointer;">
+                </header>
+                <form action="#" id="bookform">
+                    <label for="book-title">Title</label>
+                    <input type="text" id="book-title" name="book-title">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author">
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" name="pages">
+                    <label for="status" id="status-name"><input type="checkbox" name="status" id="status">I've read this book</label>
+                </form>
+                <div class="centeredBtn">
+                <button id="reset-button">Reset</button>
+                <button id="submit-button">Submit</button>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
-    </section>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>

@@ -166,6 +166,38 @@ input[type=number]{
     color: var(--other-font);
 }
 
+#b-author {
+
+}
+
+#b-status {
+    width: 6em;
+    height: 3em;
+    margin-left: auto;
+    margin-right: 3em;
+    border: 0;
+    border-radius: 10px;
+}
+
+.book-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.card {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60vw;
+    border: 2px solid var(--other-font);
+    box-shadow: 2px 2px 3px var(--other-font);
+    border-radius: 10px;
+}
+
 #b-cover {
     width: 100px;
     height: auto;

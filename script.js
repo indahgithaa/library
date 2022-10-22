@@ -3,9 +3,10 @@
 2. store the form values inside the constructors using new keyword 
 3. push the book data to the array.
 4. create card and the book's elements, give data attributes for each.
-5. append each card to container through loops.
+5. append each card to container.
 features:
 - sort (date, read, not read, favorites)
+- delete book
 - reset books/container */
 
 /* Book Elements */
@@ -41,7 +42,7 @@ Book.prototype.getAuthor = function() {
 }
 
 Book.prototype.getPage = function() {
-    return this.pages
+    return this.pages + " pages"
 }
 
 // display modal
@@ -96,14 +97,19 @@ function createCard(item) {
     cover.setAttribute('id', 'b-cover')
     cover.src = 'images/41903.jpg'
 
+    const bookInfo = document.createElement('div')
+    bookInfo.classList.add('bookInfo')
+
+    bookInfo.appendChild(title)
+    bookInfo.appendChild(author)
+    bookInfo.appendChild(pages)
+
+
     const card = document.createElement('div')
     card.classList.add('card')
-
-    card.appendChild(title)
-    card.appendChild(author)
-    card.appendChild(pages)
-    card.appendChild(statusBtn)
     card.appendChild(cover)
+    card.appendChild(bookInfo)
+    card.appendChild(statusBtn)
 
     container.appendChild(card)
 }
@@ -112,4 +118,9 @@ submit.addEventListener('click', () => {
     addBookToLibrary()
     console.log(myLibrary)
     console.log(bStatus.checked)
+    bTitle.value = ''
+    bPages.value = ''
+    bAuthor.value = ''
+    bStatus.checked =  false
+    modal.style.display = "none"
 })

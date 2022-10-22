@@ -13,7 +13,7 @@ const container = document.querySelector('.book-container')
 const bTitle = document.querySelector('#book-title')
 const bAuthor = document.querySelector('#author')
 const bPages = document.querySelector('#pages')
-const bStatus = document.querySelector('#status-name')
+const bStatus = document.querySelector('#status')
 
 /* Modal Elements */
 const modal = document.querySelector('.modal')
@@ -32,27 +32,16 @@ function Book(title, author, pages, readStatus) {
     this.readStatus = readStatus;
 };
 
-Book.prototype.titleInfo = function() {
-    this.title = bTitle.value;
-    return this.title;
-};
-
-Book.prototype.authorInfo = function() {
-    this.author = bAuthor.value;
-    return this.author;
-};
-
-Book.prototype.pagesInfo = function() {
-    this.pages = bPages.value;
-    return this.pages;
+Book.prototype.getTitle = function() {
+    return this.title
 }
 
-Book.prototype.readInfo = function() {
-    if (bStatus.checked) {
-        this.readStatus = "read"
-    } else {
-        this.readStatus = "not read"
-    }
+Book.prototype.getAuthor = function() {
+    return this.author
+}
+
+Book.prototype.getPage = function() {
+    return this.pages
 }
 
 // display modal
@@ -73,13 +62,40 @@ window.onclick = function(e) {
 }
 
 function addBookToLibrary() {
-    const book = new Book(bTitle.value, bAuthor.value, bPages.value, bStatus.value)
+    let book = new Book(bTitle.value, bAuthor.value, bPages.value, bStatus.checked)
     myLibrary.push(book)
+    createCard(book)
+}
+
+function createCard(item) {
+    const title = document.createElement('h3')
+    title.setAttribute('id', 'b-title')
+    title.textContent = item.getTitle()
+
+    const author = document.createElement('p')
+    author.setAttribute('id', 'b-author')
+    author.textContent = item.getAuthor()
+
+    const pages = document.createElement('p')
+    pages.setAttribute('id', 'b-pages')
+    pages.textContent = item.getPage()
+
+    const statusBtn = document.createElement('button')
+    statusBtn.setAttribute('id', 'b-status')
+    statusBtn.textContent = bStatus ? 'read' : 'not read'
+
+    const card = document.createElement('div')
+    card.classList.add('card')
+
+    card.appendChild(title)
+    card.appendChild(author)
+    card.appendChild(pages)
+
+    container.appendChild(card)
 }
 
 submit.addEventListener('click', () => {
     addBookToLibrary()
     console.log(myLibrary)
+    console.log(bStatus.checked)
 })
-
-

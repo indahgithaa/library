@@ -82,7 +82,19 @@ function createCard(item) {
 
     const statusBtn = document.createElement('button')
     statusBtn.setAttribute('id', 'b-status')
-    statusBtn.textContent = bStatus ? 'read' : 'not read'
+    statusBtn.textContent = bStatus.checked ? 'read' : 'not read'
+
+    if (statusBtn.textContent == "read") {
+        statusBtn.style.backgroundColor = 'var(--bit-green)'
+        statusBtn.style.color = 'var(--page)'
+    } else {
+        statusBtn.style.backgroundColor = 'var(--page)'
+        statusBtn.style.color = 'var(--other-font)'
+    }
+
+    const cover = document.createElement('img')
+    cover.setAttribute('id', 'b-cover')
+    cover.src = 'images/41903.jpg'
 
     const card = document.createElement('div')
     card.classList.add('card')
@@ -90,6 +102,8 @@ function createCard(item) {
     card.appendChild(title)
     card.appendChild(author)
     card.appendChild(pages)
+    card.appendChild(statusBtn)
+    card.appendChild(cover)
 
     container.appendChild(card)
 }

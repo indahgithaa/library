@@ -159,3 +159,14 @@ input[type=number]{
 #bookform label {
     font-size: 20px;
 }
+
+/* Card Styling */
+
+#b-title {
+    color: var(--other-font);
+}
+
+#b-cover {
+    width: 100px;
+    height: auto;
+}

@@ -97,6 +97,15 @@ function createCard(item) {
     cover.setAttribute('id', 'b-cover')
     cover.src = 'images/41903.jpg'
 
+    const deleteBtn = document.createElement('img');
+    deleteBtn.classList.add('deleteBtn');
+    deleteBtn.setAttribute('id', 'deleteBtn');
+    deleteBtn.src = 'images/bin.png';
+
+    const starBtn = document.createElement('img');
+    starBtn.setAttribute('id', 'star');
+    starBtn.src = 'images/star.png';
+
     const bookInfo = document.createElement('div')
     bookInfo.classList.add('bookInfo')
 
@@ -110,6 +119,8 @@ function createCard(item) {
     card.appendChild(cover)
     card.appendChild(bookInfo)
     card.appendChild(statusBtn)
+    card.appendChild(deleteBtn)
+    card.appendChild(starBtn)
 
     container.appendChild(card)
 }

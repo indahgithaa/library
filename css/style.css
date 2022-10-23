@@ -166,10 +166,6 @@ input[type=number]{
     color: var(--other-font);
 }
 
-#b-author {
-
-}
-
 #b-status {
     width: 6em;
     height: 3em;
@@ -193,12 +189,24 @@ input[type=number]{
     flex-direction: row;
     align-items: center;
     width: 60vw;
-    border: 2px solid var(--other-font);
-    box-shadow: 2px 2px 3px var(--other-font);
+    border: 2px solid var(--bold-font);
+    box-shadow: 2px 2px 3px var(--bold-font);
     border-radius: 10px;
 }
 
 #b-cover {
     width: 100px;
     height: auto;
+}
+
+#deleteBtn {
+    width: 20px;
+    height: auto;
+    margin-right: 1em;
+}
+
+#star {
+    width: 20px;
+    height: auto;
+    margin-right: 3em;
 }

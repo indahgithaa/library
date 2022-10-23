@@ -65,10 +65,26 @@ window.onclick = function(e) {
 function addBookToLibrary() {
     let book = new Book(bTitle.value, bAuthor.value, bPages.value, bStatus.checked)
     myLibrary.push(book)
-    createCard(book)
+    resetForm()
+    displayBooks()
 }
 
-function createCard(item) {
+function displayBooks() {
+    container.innerHTML = ''
+    for(let i = 0; i < myLibrary.length; i++) {
+        createBookCard(myLibrary[i])
+    }
+}
+
+function resetForm() {
+    bTitle.value = ''
+    bPages.value = ''
+    bAuthor.value = ''
+    bStatus.checked =  false
+    modal.style.display = "none"
+}
+
+function createBookCard(item) {
     const title = document.createElement('h3')
     title.setAttribute('id', 'b-title')
     title.textContent = item.getTitle()
@@ -98,8 +114,7 @@ function createCard(item) {
     cover.src = 'images/41903.jpg'
 
     const deleteBtn = document.createElement('img');
-    deleteBtn.classList.add('deleteBtn');
-    deleteBtn.setAttribute('id', 'deleteBtn');
+    deleteBtn.classList.add('deleteButton');
     deleteBtn.src = 'images/bin.png';
 
     const starBtn = document.createElement('img');
@@ -113,14 +128,20 @@ function createCard(item) {
     bookInfo.appendChild(author)
     bookInfo.appendChild(pages)
 
-
     const card = document.createElement('div')
-    card.classList.add('card')
+    card.setAttribute('data-index-number', myLibrary.indexOf())
+    card.classList.add('cardStyle')
     card.appendChild(cover)
     card.appendChild(bookInfo)
     card.appendChild(statusBtn)
     card.appendChild(deleteBtn)
     card.appendChild(starBtn)
+
+    /* DELETE FUNCTION */
+    deleteBtn.onclick = (index) => {
+        myLibrary.splice(index, 1)
+        displayBooks()
+    }
 
     container.appendChild(card)
 }
@@ -129,9 +150,4 @@ submit.addEventListener('click', () => {
     addBookToLibrary()
     console.log(myLibrary)
     console.log(bStatus.checked)
-    bTitle.value = ''
-    bPages.value = ''
-    bAuthor.value = ''
-    bStatus.checked =  false
-    modal.style.display = "none"
 })

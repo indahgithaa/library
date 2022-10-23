@@ -183,7 +183,7 @@ input[type=number]{
     margin-top: 20px;
 }
 
-.card {
+.cardStyle {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -199,7 +199,7 @@ input[type=number]{
     height: auto;
 }
 
-#deleteBtn {
+.deleteButton {
     width: 20px;
     height: auto;
     margin-right: 1em;

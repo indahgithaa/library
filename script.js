@@ -128,6 +128,7 @@ function createBookCard(item) {
     };
 
     /* DELETE FUNCTION */
+    // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
     deleteBtn.addEventListener('click', () => {
         if (item.favorites) {
             favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
@@ -164,6 +165,7 @@ closeBtn.onclick = () => {
     modal.style.display = "none";
 };
 
+// https://stackoverflow.com/questions/37573608/how-to-make-modal-close-on-click-outside
 window.onclick = function(e) {
     if (e.target == modal) {
         modal.style.display = "none";

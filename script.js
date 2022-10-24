@@ -1,5 +1,10 @@
-/* Book Elements */
+/* Page Elements */
 const container = document.querySelector('.book-container');
+const addBtn = document.querySelector('#addButton');
+const allBtn = document.querySelector('#all-filter')
+const favBtn = document.querySelector('#favorite-filter');
+
+/* Book Form Elements */
 const bTitle = document.querySelector('#book-title');
 const bAuthor = document.querySelector('#author');
 const bPages = document.querySelector('#pages');
@@ -7,7 +12,6 @@ const bStatus = document.querySelector('#status');
 
 /* Modal Elements */
 const modal = document.querySelector('.modal');
-const addBtn = document.querySelector('#addButton');
 const closeBtn = document.querySelector('#closeButton');
 const submit = document.querySelector('#submit-button');
 const reset = document.querySelector('#reset-button');
@@ -42,13 +46,6 @@ function addBookToLibrary() {
     myLibrary.push(book);
     resetForm();
     displayBooks();
-};
-
-function displayBooks() {
-    container.innerHTML = '';
-    for(let i = 0; i < myLibrary.length; i++) {
-        createBookCard(myLibrary[i]);
-    };
 };
 
 function resetForm() {
@@ -112,17 +109,7 @@ function createBookCard(item) {
 
     container.appendChild(card);
 
-    /* DELETE FUNCTION */
-    deleteBtn.onclick = () => {
-        let selectedBook = myLibrary.indexOf(item);
-
-        myLibrary.splice(selectedBook, 1);
-        displayBooks();
-        console.log(myLibrary);
-    }
-
     /* FAVORITES FUNCTION */
-
     if (item.favorites == undefined || item.favorites == false) {
         item.favorites = false
         starBtn.src = 'images/unstarred.png'
@@ -132,20 +119,41 @@ function createBookCard(item) {
         if (item.favorites == false) {
              starBtn.src = 'images/starred.png'
              item.favorites = true
-             favoriteBooks.push(item)
-             console.log(favoriteBooks)
          } else {
              starBtn.src = 'images/unstarred.png'
              item.favorites = false
-             favoriteBooks.splice(favoriteBooks.splice(favoriteBooks.indexOf(item), 1))
          }
-    }
-}
 
-submit.addEventListener('click', () => {
-    addBookToLibrary();
-    console.log(myLibrary);
-});
+         item.favorites ? favoriteBooks.push(item) : favoriteBooks.splice(favoriteBooks.indexOf(item),  1)
+         console.log(favoriteBooks)
+    }
+
+    /* DELETE FUNCTION */
+    deleteBtn.addEventListener('click', () => {
+        if (item.favorites) {
+            favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
+            myLibrary.splice(myLibrary.indexOf(item), 1);
+        } else {
+            myLibrary.splice(myLibrary.indexOf(item), 1);
+        }
+
+        displayBooks();
+    });
+};
+
+function displayBooks() {
+    container.innerHTML = '';
+    for(let i = 0; i < myLibrary.length; i++) {
+        createBookCard(myLibrary[i]);
+    };
+};
+
+function displayFavBooks() {
+    container.innerHTML = ''
+    for(let i = 0; i < favoriteBooks.length; i++) {
+        createBookCard(favoriteBooks[i]);
+    };
+};
 
 
 /* MODAL INTERACTIONS */
@@ -162,3 +170,17 @@ window.onclick = function(e) {
         modal.style.display = "none";
     };
 };
+
+/* BUTTON INTERACTIONS */
+allBtn.addEventListener('click', () => {
+    displayBooks();
+});
+
+favBtn.addEventListener('click', () => {
+    displayFavBooks();
+});
+
+submit.addEventListener('click', () => {
+    addBookToLibrary();
+    console.log(myLibrary);
+});

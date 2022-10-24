@@ -38,6 +38,17 @@
     background-color: var(--page);
 }
 
+/* Features */
+.features {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+    width: 70vw;
+    max-width: 700px;
+    justify-content: space-between;
+}
+
 /* Search Bar */
 .search-bar {
     width: 100%;
@@ -48,7 +59,6 @@
     align-items: center;
     border-radius: 10px;
     padding: 10px 20px;
-    margin-top: 30px;
 }
 
 .search-bar input {

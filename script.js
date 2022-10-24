@@ -15,11 +15,14 @@ const reset = document.querySelector('#reset-button');
 /* ----- Library Functionalities start here ----- */
 let myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
+let favoriteBooks = [];
+
+function Book(title, author, pages, readStatus, favorites) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.readStatus = readStatus;
+    this.favorites = favorites;
 };
 
 Book.prototype.getTitle = function() {
@@ -32,23 +35,6 @@ Book.prototype.getAuthor = function() {
 
 Book.prototype.getPage = function() {
     return this.pages + " pages";
-};
-
-// display modal
-addBtn.addEventListener('click', () => {
-    modal.style.display = "block";
-});
-
-//close modal
-closeBtn.onclick = () => {
-    modal.style.display = "none";
-};
-
-// Allow users to close the modal from outside
-window.onclick = function(e) {
-    if (e.target == modal) {
-        modal.style.display = "none";
-    };
 };
 
 function addBookToLibrary() {
@@ -107,7 +93,7 @@ function createBookCard(item) {
 
     const starBtn = document.createElement('img');
     starBtn.setAttribute('id', 'star');
-    starBtn.src = 'images/star.png';
+    starBtn.src = item.favorites ? 'images/starred.png' : 'images/unstarred.png'
 
     const bookInfo = document.createElement('div');
     bookInfo.classList.add('bookInfo');
@@ -134,9 +120,45 @@ function createBookCard(item) {
         displayBooks();
         console.log(myLibrary);
     }
+
+    /* FAVORITES FUNCTION */
+
+    if (item.favorites == undefined || item.favorites == false) {
+        item.favorites = false
+        starBtn.src = 'images/unstarred.png'
+    }
+ 
+     starBtn.onclick = () => {
+        if (item.favorites == false) {
+             starBtn.src = 'images/starred.png'
+             item.favorites = true
+             favoriteBooks.push(item)
+             console.log(favoriteBooks)
+         } else {
+             starBtn.src = 'images/unstarred.png'
+             item.favorites = false
+             favoriteBooks.splice(favoriteBooks.splice(favoriteBooks.indexOf(item), 1))
+         }
+    }
 }
 
 submit.addEventListener('click', () => {
     addBookToLibrary();
     console.log(myLibrary);
 });
+
+
+/* MODAL INTERACTIONS */
+addBtn.addEventListener('click', () => {
+    modal.style.display = "block";
+});
+
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+window.onclick = function(e) {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    };
+};

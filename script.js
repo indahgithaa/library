@@ -69,7 +69,7 @@ function resetForm() {
     bTitle.value = ''
     bPages.value = ''
     bAuthor.value = ''
-    bStatus.checked =  false
+    bStatus.checked = false
     modal.style.display = "none"
 };
 
@@ -88,14 +88,13 @@ function createBookCard(item) {
 
     const statusBtn = document.createElement('button');
     statusBtn.setAttribute('id', 'b-status');
-    statusBtn.textContent = bStatus.checked ? 'read' : 'not read';
 
-    if (statusBtn.textContent == "read") {
-        statusBtn.style.backgroundColor = 'var(--bit-green)';
-        statusBtn.style.color = 'var(--page)';
+    if (item.readStatus) {
+        statusBtn.textContent = 'read'
+        statusBtn.style.backgroundColor = 'var(--bit-green)'
+        statusBtn.style.color = 'var(--page)'
     } else {
-        statusBtn.style.backgroundColor = 'var(--page)';
-        statusBtn.style.color = 'var(--other-font)';
+        statusBtn.textContent = 'not read'
     }
 
     const cover = document.createElement('img');
@@ -140,5 +139,4 @@ function createBookCard(item) {
 submit.addEventListener('click', () => {
     addBookToLibrary();
     console.log(myLibrary);
-    console.log(bStatus.checked);
 });

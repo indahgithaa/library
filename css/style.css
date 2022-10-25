@@ -17,16 +17,11 @@
     width: 100%;
 }
 
-button {
-    cursor: pointer;
-}
-
-img {
+button, img, label, input[type=checkbox] {
     cursor: pointer;
 }
 
 /* Header */
-
 .nav-head {
     width: 100%;
     background-color: var(--bit-green);
@@ -44,7 +39,19 @@ img {
     border: 0;
     border-radius: 10px;
     cursor: pointer;
+    background-color: var(--other-font);
+    color: white;
+    margin-left: 5px;
+}
+
+#removeButton {
+    width: 8em;
+    height: 3em;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
     background-color: var(--page);
+    margin-left: 5px;
 }
 
 /* Features */
@@ -155,6 +162,12 @@ img {
     margin-top: 15px;
 }
 
+#error {
+    color: gray;
+    font-style: italic;
+    font-size: 15px;
+    display: none;
+}
 
 #reset-button {
     width: 100%;
@@ -178,6 +191,7 @@ img {
 input {
     border: 2px solid #b9c3ca;
     border-radius: 5px;
+    padding: 1px;
 }
 
 input[type=checkbox] {

@@ -15,6 +15,7 @@
         <h1>Digital Library</h1>
         <span>
         <button id="addButton">+ Add Book</button>
+        <button id="removeButton">Delete All</button>
         </span>
     </header>
     <div class="main-container">
@@ -38,7 +39,7 @@
                     <img src="images/close.png" id="closeButton" style="width: 15px; height: 15px; cursor:pointer;">
                 </header>
                 <form action="#" id="bookform">
-                    <label for="book-title">Title</label>
+                    <label for="book-title">Title *</label>
                     <input type="text" id="book-title" name="book-title">
                     <label for="author">Author</label>
                     <input type="text" id="author" name="author">
@@ -46,6 +47,7 @@
                     <input type="number" id="pages" name="pages">
                     <label for="status" id="status-name"><input type="checkbox" name="status" id="status">I've read this book</label>
                 </form>
+                <p id="error">Please fill out all required fields</p>
                 <div class="centeredBtn">
                 <button id="reset-button">Reset</button>
                 <button id="submit-button">Submit</button>

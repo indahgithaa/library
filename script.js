@@ -13,6 +13,7 @@ const bStatus = document.querySelector('#status');
 /* Modal Elements */
 const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('#closeButton');
+const errorMsg = document.querySelector('#error')
 const submit = document.querySelector('#submit-button');
 const reset = document.querySelector('#reset-button');
 
@@ -53,8 +54,19 @@ function resetForm() {
     bPages.value = '';
     bAuthor.value = '';
     bStatus.checked = false;
-    modal.style.display = "none";
 };
+
+function checkForm() {
+    if (bTitle.value == '') {
+        errorMsg.style.display = 'block'
+        modal.style.display = "block";
+        return
+    } else {
+        errorMsg.style.display = 'none'
+        modal.style.display = "none";
+        addBookToLibrary()
+    }
+}
 
 function createBookCard(item) {
     const title = document.createElement('h3');
@@ -63,11 +75,19 @@ function createBookCard(item) {
 
     const author = document.createElement('p');
     author.setAttribute('id', 'b-author');
-    author.textContent = item.getAuthor();
+    if (item.author == '') {
+        author.textContent = 'unknown'
+    } else {
+        author.textContent = item.getAuthor();
+    }
 
     const pages = document.createElement('p');
     pages.setAttribute('id', 'b-pages');
-    pages.textContent = item.getPage();
+    if (item.pages == '') {
+        pages.textContent = '-'
+    } else {
+        pages.textContent = item.getAuthor();
+    }
 
     const statusBtn = document.createElement('button');
     statusBtn.setAttribute('id', 'b-status');
@@ -165,6 +185,38 @@ function displayFavBooks() {
     };
 };
 
+/* BUTTON INTERACTIONS */
+function allFocus() {
+    allBtn.style.backgroundColor = 'var(--other-font)';
+    favBtn.style.backgroundColor = 'var(--bit-green)';
+};
+
+function favFocus() {
+    favBtn.style.backgroundColor = 'var(--other-font)';
+    allBtn.style.backgroundColor = 'var(--bit-green)';
+};
+
+function resetFocus() {
+    favBtn.style.backgroundColor = 'var(--bit-green)';
+    allBtn.style.backgroundColor = 'var(--bit-green)';
+}
+
+submit.addEventListener('click', () => {
+    checkForm();
+    resetFocus();
+    console.log(myLibrary);
+});
+
+allBtn.addEventListener('click', () => {
+    displayBooks();
+    allFocus();
+});
+
+favBtn.addEventListener('click', () => {
+    displayFavBooks();
+    favFocus();
+});
+
 /* MODAL INTERACTIONS */
 addBtn.addEventListener('click', () => {
     modal.style.display = "block";
@@ -180,28 +232,3 @@ window.onclick = function(e) {
         modal.style.display = "none";
     };
 };
-
-/* BUTTON INTERACTIONS */
-function allFocus() {
-    allBtn.style.backgroundColor = 'var(--other-font)';
-    favBtn.style.backgroundColor = 'var(--bit-green)';
-};
-
-function favFocus() {
-    favBtn.style.backgroundColor = 'var(--other-font)';
-    allBtn.style.backgroundColor = 'var(--bit-green)';
-};
-
-submit.addEventListener('click', () => {
-    addBookToLibrary();
-});
-
-allBtn.addEventListener('click', () => {
-    displayBooks();
-    allFocus();
-});
-
-favBtn.addEventListener('click', () => {
-    displayFavBooks();
-    favFocus();
-});

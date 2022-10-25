@@ -72,7 +72,7 @@ img {
     height: 2vw;
     min-height: 30px;
     font-size: 13px;
-    background-color: var(--features);
+    background-color: var(--bit-green);
     border: 0;
     color: white;
     border-radius: 10px;
@@ -192,10 +192,6 @@ input[type=number]{
     height: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-#book-title:focus, #author:focus, #pages:focus {
-    border: 1px solid var(--bit-green)
 }
 
 #bookform label {

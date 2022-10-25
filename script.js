@@ -129,15 +129,25 @@ function createBookCard(item) {
 
     /* DELETE FUNCTION */
     // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus 
+    // hasFocus() doesnt work.. let's use background color to indicate the focused section instead
+
     deleteBtn.addEventListener('click', () => {
-        if (item.favorites) {
+        if (allBtn.style.backgroundColor == 'var(--other-font)') {
+            console.log('delete activated in all books section');
+            if (item.favorites) {
+                favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
+                myLibrary.splice(myLibrary.indexOf(item), 1);
+            } else {
+                myLibrary.splice(myLibrary.indexOf(item), 1);
+            };
+            displayBooks();
+        } else if (favBtn.style.backgroundColor == 'var(--other-font)') {
+            console.log('delete activated in fav section');
             favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
             myLibrary.splice(myLibrary.indexOf(item), 1);
-        } else {
-            myLibrary.splice(myLibrary.indexOf(item), 1);
-        }
-
-        displayBooks();
+            displayFavBooks();
+        };
     });
 };
 
@@ -154,7 +164,6 @@ function displayFavBooks() {
         createBookCard(favoriteBooks[i]);
     };
 };
-
 
 /* MODAL INTERACTIONS */
 addBtn.addEventListener('click', () => {
@@ -173,14 +182,26 @@ window.onclick = function(e) {
 };
 
 /* BUTTON INTERACTIONS */
+function allFocus() {
+    allBtn.style.backgroundColor = 'var(--other-font)';
+    favBtn.style.backgroundColor = 'var(--bit-green)';
+};
+
+function favFocus() {
+    favBtn.style.backgroundColor = 'var(--other-font)';
+    allBtn.style.backgroundColor = 'var(--bit-green)';
+};
+
 submit.addEventListener('click', () => {
     addBookToLibrary();
 });
 
 allBtn.addEventListener('click', () => {
     displayBooks();
+    allFocus();
 });
 
 favBtn.addEventListener('click', () => {
     displayFavBooks();
+    favFocus();
 });

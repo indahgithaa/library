@@ -135,6 +135,23 @@ function createBookCard(item) {
 
     container.appendChild(card);
 
+    /* TOGGLE STATUS BUTTON */
+    statusBtn.addEventListener('click', () => {
+        if (item.readStatus) {
+            statusBtn.textContent = 'not read';
+            statusBtn.style.backgroundColor = '#f0f0f0';
+            statusBtn.style.color = 'var(--other-font)';
+            item.readStatus = false;
+        } else {
+            statusBtn.textContent = 'read';
+            statusBtn.style.backgroundColor = 'var(--bit-green)';
+            statusBtn.style.color = 'var(--page)';
+            item.readStatus = true;
+        }
+
+        console.log(myLibrary)
+    })
+
     /* FAVORITES FUNCTION */
     if (item.favorites == undefined || item.favorites == false) {
         item.favorites = false;

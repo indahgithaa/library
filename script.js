@@ -1,6 +1,7 @@
 /* Page Elements */
 const container = document.querySelector('.book-container');
 const addBtn = document.querySelector('#addButton');
+const removeBtn = document.querySelector('#removeButton');
 const allBtn = document.querySelector('#all-filter')
 const favBtn = document.querySelector('#favorite-filter');
 
@@ -17,7 +18,7 @@ const errorMsg = document.querySelector('#error')
 const submit = document.querySelector('#submit-button');
 const reset = document.querySelector('#reset-button');
 
-/* ----- Library Functionalities start here ----- */
+/* -------------- Library Functionalities start here -------------- */
 let myLibrary = [];
 
 let favoriteBooks = [];
@@ -56,17 +57,22 @@ function resetForm() {
     bStatus.checked = false;
 };
 
+function resetBooks() {
+    myLibrary.splice(0, myLibrary.length)
+    favoriteBooks.splice(0, favoriteBooks.length)
+}
+
 function checkForm() {
     if (bTitle.value == '') {
-        errorMsg.style.display = 'block'
+        errorMsg.style.display = 'block';
         modal.style.display = "block";
         return
     } else {
-        errorMsg.style.display = 'none'
+        errorMsg.style.display = 'none';
         modal.style.display = "none";
-        addBookToLibrary()
-    }
-}
+        addBookToLibrary();
+    };
+};
 
 function createBookCard(item) {
     const title = document.createElement('h3');
@@ -86,8 +92,8 @@ function createBookCard(item) {
     if (item.pages == '') {
         pages.textContent = '-'
     } else {
-        pages.textContent = item.getAuthor();
-    }
+        pages.textContent = item.getPage();
+    };
 
     const statusBtn = document.createElement('button');
     statusBtn.setAttribute('id', 'b-status');
@@ -153,7 +159,7 @@ function createBookCard(item) {
     // hasFocus() doesnt work.. let's use background color to indicate the focused section instead
 
     deleteBtn.addEventListener('click', () => {
-        if (allBtn.style.backgroundColor == 'var(--other-font)') {
+        if (allBtn.style.backgroundColor == 'var(--other-font)' || allBtn.style.backgroundColor == 'var(--bit-green)' && favBtn.style.backgroundColor == 'var(--bit-green)') {
             console.log('delete activated in all books section');
             if (item.favorites) {
                 favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
@@ -185,7 +191,9 @@ function displayFavBooks() {
     };
 };
 
-/* BUTTON INTERACTIONS */
+/* --------------- interactions --------------- */
+
+/* BUTTON ON PAGE INTERACTIONS */
 function allFocus() {
     allBtn.style.backgroundColor = 'var(--other-font)';
     favBtn.style.backgroundColor = 'var(--bit-green)';
@@ -201,11 +209,14 @@ function resetFocus() {
     allBtn.style.backgroundColor = 'var(--bit-green)';
 }
 
-submit.addEventListener('click', () => {
-    checkForm();
-    resetFocus();
-    console.log(myLibrary);
+addBtn.addEventListener('click', () => {
+    modal.style.display = "block";
 });
+
+removeBtn.addEventListener('click', () => {
+    resetBooks();
+    displayBooks();
+})
 
 allBtn.addEventListener('click', () => {
     displayBooks();
@@ -218,8 +229,14 @@ favBtn.addEventListener('click', () => {
 });
 
 /* MODAL INTERACTIONS */
-addBtn.addEventListener('click', () => {
-    modal.style.display = "block";
+submit.addEventListener('click', () => {
+    checkForm();
+    resetFocus();
+    console.log(myLibrary);
+});
+
+reset.addEventListener('click', () => {
+    resetForm();
 });
 
 closeBtn.onclick = () => {

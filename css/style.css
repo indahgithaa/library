@@ -216,6 +216,8 @@ input[type=number]{
     font-size: 20px;
 }
 
+
+
 /* Card Styling */
 
 #b-title {
@@ -254,6 +256,13 @@ input[type=number]{
 #b-cover {
     width: 100px;
     height: auto;
+}
+
+#b-title {
+    width: 23em;
+
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .deleteButton {

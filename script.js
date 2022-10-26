@@ -12,12 +12,17 @@ const bAuthor = document.querySelector('#author');
 const bPages = document.querySelector('#pages');
 const bStatus = document.querySelector('#status');
 
-/* Modal Elements */
+/* Modal (Book Form) Elements */
 const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('#closeButton');
 const errorMsg = document.querySelector('#error')
 const submit = document.querySelector('#submit-button');
 const reset = document.querySelector('#reset-button');
+
+/* Alert Popup Elements */
+const alertPopup = document.querySelector('.alert')
+const deleteOk = document.querySelector('#yes')
+const deleteNo = document.querySelector('#no')
 
 /* -------------- Library Functionalities start here -------------- */
 let myLibrary = [];
@@ -117,7 +122,7 @@ function createBookCard(item) {
 
     const starBtn = document.createElement('img');
     starBtn.setAttribute('id', 'star');
-    starBtn.src = item.favorites ? 'images/starred.png' : 'images/unstarred.png'
+    starBtn.src = item.favorites ? 'images/starred.png' : 'images/unstarred.png';
 
     const bookInfo = document.createElement('div');
     bookInfo.classList.add('bookInfo');
@@ -135,6 +140,16 @@ function createBookCard(item) {
     card.appendChild(starBtn);
 
     container.appendChild(card);
+
+    // title validation
+    if (title.textContent.length > 80) {
+        let titleArr = item.title.split('')
+        titleArr.splice(80, item.title.length)
+        item.title = titleArr.join('') + '...'
+        title.textContent = item.title
+    }
+
+    console.log(item.title.length)
 
     /* TOGGLE STATUS BUTTON */
     statusBtn.addEventListener('click', () => {
@@ -247,10 +262,7 @@ addBtn.addEventListener('click', () => {
     modal.style.display = "block";
 });
 
-removeBtn.addEventListener('click', () => {
-    resetBooks();
-    displayBooks();
-})
+
 
 allBtn.addEventListener('click', () => {
     displayBooks();

@@ -44,7 +44,7 @@
                     <label for="author">Author</label>
                     <input type="text" id="author" name="author" minlength="0" maxlength="50">
                     <label for="pages">Pages</label>
-                    <input type="number" id="pages" name="pages">
+                    <input type="number" id="pages" max="9999" name="pages">
                     <label for="status" id="status-name"><input type="checkbox" name="status" id="status">I've read this book</label>
                 </form>
                 <p id="error">Please fill out all required fields</p>
@@ -55,7 +55,16 @@
                 </div>
             </div>
         </section>
-
+        <!-- Alert Popup -->
+        <div class="alert">
+        <section class="alert-popup">
+            <h3 id="alertMsg">All books will be deleted. Are you sure?</h3>
+            <div class="alertBtn">
+            <button id="yes">Delete</button>
+            <button id="no">Cancel</button>
+            </div>
+        </section>
+        </div>
     </div>
     <main class="book-container">
             

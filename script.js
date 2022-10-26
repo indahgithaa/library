@@ -149,8 +149,6 @@ function createBookCard(item) {
         title.textContent = item.title
     }
 
-    console.log(item.title.length)
-
     /* TOGGLE STATUS BUTTON */
     statusBtn.addEventListener('click', () => {
         if (item.readStatus) {
@@ -164,7 +162,6 @@ function createBookCard(item) {
             statusBtn.style.color = 'var(--page)';
             item.readStatus = true;
         }
-
         console.log(myLibrary)
     })
 
@@ -188,8 +185,6 @@ function createBookCard(item) {
 
     /* DELETE FUNCTION */
     // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
-    // https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus 
-    // hasFocus() doesnt work.. let's use background color to indicate the focused section instead
 
     deleteBtn.addEventListener('click', () => {
         if (allBtn.style.backgroundColor == 'var(--other-font)' || allBtn.style.backgroundColor == 'var(--bit-green)' && favBtn.style.backgroundColor == 'var(--bit-green)') {
@@ -262,7 +257,20 @@ addBtn.addEventListener('click', () => {
     modal.style.display = "block";
 });
 
+removeBtn.addEventListener('click', () => {
+    alertPopup.style.display = 'block'
+})
 
+deleteOk.addEventListener('click', () => {
+    resetBooks();
+    displayBooks();
+    alertPopup.style.display = 'none'
+
+})
+
+deleteNo.addEventListener('click', () => {
+    alertPopup.style.display = 'none'
+})
 
 allBtn.addEventListener('click', () => {
     displayBooks();

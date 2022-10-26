@@ -142,11 +142,16 @@ function createBookCard(item) {
     container.appendChild(card);
 
     // title validation
-    if (title.textContent.length > 80) {
-        let titleArr = item.title.split('')
-        titleArr.splice(80, item.title.length)
-        item.title = titleArr.join('') + '...'
-        title.textContent = item.title
+    if (title.textContent.length > 30) {
+        let titleArr = item.title.split('');
+        titleArr.splice(30, item.title.length);
+        item.title = titleArr.join('') + '...';
+        title.textContent = item.title;
+    }
+
+    //page number validations
+    if (item.pages > 99999) {
+        pages.textContent = "> 99999 pages"
     }
 
     /* TOGGLE STATUS BUTTON */
@@ -187,7 +192,7 @@ function createBookCard(item) {
     // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 
     deleteBtn.addEventListener('click', () => {
-        if (allBtn.style.backgroundColor == 'var(--other-font)' || allBtn.style.backgroundColor == 'var(--bit-green)' && favBtn.style.backgroundColor == 'var(--bit-green)') {
+        if (allBtn.style.backgroundColor == 'var(--other-font)') {
             console.log('delete activated in all books section');
             if (item.favorites) {
                 favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
@@ -201,6 +206,15 @@ function createBookCard(item) {
             favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
             myLibrary.splice(myLibrary.indexOf(item), 1);
             displayFavBooks();
+        } else {
+            console.log('delete activated in all books section');
+            if (item.favorites) {
+                favoriteBooks.splice(favoriteBooks.indexOf(item), 1);
+                myLibrary.splice(myLibrary.indexOf(item), 1);
+            } else {
+                myLibrary.splice(myLibrary.indexOf(item), 1);
+            };
+            displayBooks();
         };
     });
 };

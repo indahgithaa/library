@@ -142,9 +142,9 @@ function createBookCard(item) {
     container.appendChild(card);
 
     // title validation
-    if (title.textContent.length > 30) {
+    if (title.textContent.length > 50) {
         let titleArr = item.title.split('');
-        titleArr.splice(30, item.title.length);
+        titleArr.splice(50, item.title.length);
         item.title = titleArr.join('') + '...';
         title.textContent = item.title;
     }

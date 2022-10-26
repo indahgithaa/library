@@ -11,6 +11,10 @@
     font-family: Poppins;
 }
 
+body {
+    background-color: var(--page);
+}
+
 .main-container {
     display: flex;
     justify-content: center;
@@ -244,6 +248,7 @@ input[type=number]{
     border: 2px solid var(--bold-font);
     box-shadow: 2px 2px 3px var(--bold-font);
     border-radius: 10px;
+    background-color: white;
 }
 
 #b-cover {

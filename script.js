@@ -4,6 +4,7 @@ const addBtn = document.querySelector('#addButton');
 const removeBtn = document.querySelector('#removeButton');
 const allBtn = document.querySelector('#all-filter')
 const favBtn = document.querySelector('#favorite-filter');
+const searchBar = document.querySelector('#search');
 
 /* Book Form Elements */
 const bTitle = document.querySelector('#book-title');
@@ -210,6 +211,22 @@ function displayFavBooks() {
 
 /* --------------- interactions --------------- */
 
+/* SEARCH BAR INTERACTIONS */
+function searchBook() {
+    const filterWord = searchBar.value.toLowerCase();
+    const cardMatch = document.getElementsByClassName('cardStyle')
+
+    for(i = 0; i < cardMatch.length; i++) {
+        bookMatch = cardMatch[i].getElementsByTagName('h3')[0];
+        txt = bookMatch.textContent;
+        if (txt.toLowerCase().indexOf(filterWord) > -1) {
+            cardMatch[i].style.display = ''
+        } else {
+            cardMatch[i].style.display = 'none'
+        }
+    };
+};
+
 /* BUTTON ON PAGE INTERACTIONS */
 function allFocus() {
     allBtn.style.backgroundColor = 'var(--other-font)';
@@ -266,3 +283,10 @@ window.onclick = function(e) {
         modal.style.display = "none";
     };
 };
+
+modal.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        checkForm();
+    };
+});

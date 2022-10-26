@@ -301,7 +301,9 @@ closeBtn.onclick = () => {
 window.onclick = function(e) {
     if (e.target == modal) {
         modal.style.display = "none";
-    };
+    } else if (e.target == alertPopup) {
+        alertPopup.style.display = "none";
+    }
 };
 
 modal.addEventListener('keydown', (e) => {

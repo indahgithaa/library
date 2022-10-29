@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
@@ -16,6 +16,8 @@
         <span>
         <button id="addButton">+ Add Book</button>
         <button id="removeButton">Delete All</button>
+        <button id="plus">+</button>
+        <button id="x">✘</button>
         </span>
     </header>
     <div class="main-container">
@@ -26,8 +28,10 @@
                 <button type="submit"><img src="images/search.png"></button>
             </form>
             <!-- Button -->
+            <div id="featBtn">
             <span><button id="all-filter"><img src="images/f-bookstack.png"> All Books</button></span>
             <span><button id="favorite-filter"><img src="images/f-star.png"> Favorite</button></span>
+        </div>
         </div>
         <!-- Modal Popup -->
         <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
@@ -42,7 +46,7 @@
                     <label for="book-title">Title *</label>
                     <input type="text" id="book-title" name="book-title">
                     <label for="author">Author</label>
-                    <input type="text" id="author" name="author" minlength="0" maxlength="50">
+                    <input type="text" id="author" name="author" minlength="0" maxlength="25">
                     <label for="pages">Pages</label>
                     <input type="number" id="pages" min="0" max="99999" name="pages">
                     <label for="status" id="status-name"><input type="checkbox" name="status" id="status">I've read this book</label>
@@ -58,7 +62,7 @@
         <!-- Alert Popup -->
         <div class="alert">
         <section class="alert-popup">
-            <h3 id="alertMsg">All books will be deleted. Are you sure?</h3>
+            <h4 id="alertMsg">All books will be deleted. Are you sure?</h4>
             <div class="alertBtn">
             <button id="yes">Delete</button>
             <button id="no">Cancel</button>
@@ -67,7 +71,7 @@
         </div>
     </div>
     <main class="book-container">
-            
+
     </main>
     <script src="script.js"></script>
 </body>

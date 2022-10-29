@@ -5,6 +5,8 @@ const removeBtn = document.querySelector('#removeButton');
 const allBtn = document.querySelector('#all-filter')
 const favBtn = document.querySelector('#favorite-filter');
 const searchBar = document.querySelector('#search');
+const plusBtn = document.querySelector('#plus');
+const xBtn = document.querySelector('#x');
 
 /* Book Form Elements */
 const bTitle = document.querySelector('#book-title');
@@ -131,13 +133,19 @@ function createBookCard(item) {
     bookInfo.appendChild(author);
     bookInfo.appendChild(pages);
 
+    const bookSymbols = document.createElement('div')
+    bookSymbols.setAttribute('id', 'symbols')
+    bookSymbols.appendChild(statusBtn)
+    bookSymbols.appendChild(deleteBtn)
+    bookSymbols.appendChild(starBtn)
+
+    const allDetails = document.createElement('div')
+
     const card = document.createElement('div');
     card.classList.add('cardStyle');
     card.appendChild(cover);
     card.appendChild(bookInfo);
-    card.appendChild(statusBtn);
-    card.appendChild(deleteBtn);
-    card.appendChild(starBtn);
+    card.appendChild(bookSymbols)
 
     container.appendChild(card);
 
@@ -272,7 +280,15 @@ addBtn.addEventListener('click', () => {
 });
 
 removeBtn.addEventListener('click', () => {
-    alertPopup.style.display = 'block'
+    alertPopup.style.display = 'block';
+})
+
+plusBtn.addEventListener('click', () => {
+    modal.style.display = "block";
+})
+
+xBtn.addEventListener('click', () => {
+    alertPopup.style.display = 'block';
 })
 
 deleteOk.addEventListener('click', () => {

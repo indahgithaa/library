@@ -27,28 +27,31 @@ const deleteOk = document.querySelector('#yes')
 const deleteNo = document.querySelector('#no')
 
 /* -------------- Library Functionalities start here -------------- */
+
 let myLibrary = [];
 
 let favoriteBooks = [];
 
-function Book(title, author, pages, readStatus, favorites) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.favorites = favorites;
-};
+class Book {
+    constructor(title, author, pages, readStatus, favorites) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+        this.favorites = favorites;
+    }
 
-Book.prototype.getTitle = function() {
-    return this.title;
-};
+    getTitle() {
+        return this.title;
+    };
 
-Book.prototype.getAuthor = function() {
-    return this.author;
-};
+    getAuthor() {
+        return this.author;
+    };
 
-Book.prototype.getPage = function() {
-    return this.pages + " pages";
+    getPage() {
+        return this.pages + " pages";
+    };
 };
 
 function addBookToLibrary() {
@@ -342,3 +345,25 @@ modal.addEventListener('keydown', (e) => {
         checkForm();
     };
 });
+
+/* CONSTRUCTOR VER.
+
+function Book(title, author, pages, readStatus, favorites) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
+    this.favorites = favorites;
+};
+
+Book.prototype.getTitle = function() {
+    return this.title;
+};
+
+Book.prototype.getAuthor = function() {
+    return this.author;
+};
+
+Book.prototype.getPage = function() {
+    return this.pages + " pages";
+}; */
